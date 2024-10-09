@@ -1,0 +1,65 @@
+#include <stdio.h>
+#define LEN 5
+int stack[5],top=-1;
+int arrlen = sizeof(stack)/sizeof(stack[0]);
+void pop();
+void push();
+void display();
+void main(){
+int n,choice;
+printf("1. Push\n");
+printf("2. Pop\n");
+printf("3. Display\n");
+printf("Enter the choice:");
+scanf("%d",&choice);
+
+while(choice == 1 || choice == 2 || choice == 3){
+        switch(choice){
+    case 1:
+        push();
+        break;
+    case 2:
+        pop();
+        break;
+    case 3:
+        display();
+        exit(0);
+}
+printf("Enter the choice:");
+scanf("%d",&choice);
+}
+
+}
+
+void push(){
+if(top == arrlen-1){
+    printf("Stack Overflow\n");
+}else{
+    int num;
+    printf("Enter the number:");
+    scanf("%d",&num);
+    top = top+1;
+stack[top] = num;
+}
+}
+void pop(){
+if(top == -1)
+{printf("Stack Underflow\n");
+}
+else{
+    int ele;
+    ele = stack[top];
+    printf("%d has been Popped\n",ele);
+    top = top-1;
+}
+}
+void display(){
+if(top == -1){
+    printf("Stack Underflow\n");
+}
+else{
+    for(int i=top;i>=0;i--){
+        printf("%d\n",stack[i]);
+    }
+}
+}
