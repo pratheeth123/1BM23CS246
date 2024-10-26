@@ -1,0 +1,176 @@
+#include <stdio.h>
+
+#define MAX 3  // Define the maximum capacity of the queue
+
+int queue[MAX];
+int front = -1;
+int rear = -1;
+
+// Check if the queue is full
+int isFull() {
+    return ((rear + 1) % MAX == front);
+}
+
+// Check if the queue is empty
+int isEmpty() {
+    return (front == -1);
+}
+
+// Add an element to the queue
+void enqueue(int value) {
+    if (isFull()) {
+        printf("Queue is full! Cannot insert %d.\n", value);
+    } else {
+        if (isEmpty()) {
+            front = 0;
+        }
+        rear = (rear + 1) % MAX;
+        queue[rear] = value;
+        printf("Inserted %d\n", value);
+    }
+}
+
+// Remove an element from the queue
+int dequeue() {
+    if (isEmpty()) {
+        printf("Queue is empty! Cannot dequeue.\n");
+        return -1;
+    } else {
+        int element = queue[front];
+        if (front == rear) {
+            // Queue has only one element, so we reset it after dequeueing
+            front = -1;
+            rear = -1;
+        } else {
+            front = (front + 1) % MAX;
+        }
+        printf("Removed %d\n", element);
+        return element;
+    }
+}
+
+// Display the elements in the queue
+void display() {
+    if (isEmpty()) {
+        printf("Queue is empty!\n");
+    } else {
+        printf("Queue elements: ");
+        int i = front;
+        while (1) {
+            printf("%d ", queue[i]);
+            if (i == rear) break;
+            i = (i + 1) % MAX;
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int choice, value;
+    while (1) {
+        printf("\nSelect an operation:\n");
+        printf("1. Enqueue\n");
+        printf("2. Dequeue\n");
+        printf("3. Display\n");
+        printf("4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter value to enqueue: ");
+                scanf("%d", &value);
+                enqueue(value);
+                break;
+            case 2:
+                dequeue();
+                break;
+            case 3:
+                display();
+                break;
+            case 4:
+                printf("Exiting program.\n");
+                return 0;
+            default:
+                printf("Invalid choice. Please try again.\n");
+        }
+    }
+}
+
+Output:
+Select an operation:
+1. Enqueue
+2. Dequeue
+3. Display
+4. Exit
+Enter your choice: 1
+Enter value to enqueue: 10
+Inserted 10
+
+Select an operation:
+1. Enqueue
+2. Dequeue
+3. Display
+4. Exit
+Enter your choice: 1
+Enter value to enqueue: 20
+Inserted 20
+
+Select an operation:
+1. Enqueue
+2. Dequeue
+3. Display
+4. Exit
+Enter your choice: 1
+Enter value to enqueue: 30
+Inserted 30
+
+Select an operation:
+1. Enqueue
+2. Dequeue
+3. Display
+4. Exit
+Enter your choice: 3
+Queue elements: 10 20 30 
+
+Select an operation:
+1. Enqueue
+2. Dequeue
+3. Display
+4. Exit
+Enter your choice: 1
+Enter value to enqueue: 40
+Queue is full! Cannot insert 40.
+
+Select an operation:
+1. Enqueue
+2. Dequeue
+3. Display
+4. Exit
+Enter your choice: 2
+Removed 10
+
+Select an operation:
+1. Enqueue
+2. Dequeue
+3. Display
+4. Exit
+Enter your choice: 1
+Enter value to enqueue: 40
+Inserted 40
+
+Select an operation:
+1. Enqueue
+2. Dequeue
+3. Display
+4. Exit
+Enter your choice: 3
+Queue elements: 20 30 40 
+
+Select an operation:
+1. Enqueue
+2. Dequeue
+3. Display
+4. Exit
+Enter your choice: 4
+Exiting program.
