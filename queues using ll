@@ -46,3 +46,34 @@ void display(struct Node *front){
     }
     printf("NULL");
 }
+int main() {
+    int choice;
+    printf("\n1: Insert\n2: Delete\n3: Display\n4: Exit\n");
+    int flag = 1;
+    while (flag) {
+        printf("\nEnter your choice: ");
+        scanf("%d", &choice);
+        switch (choice) {
+            case 1: {
+                int data;
+                printf("Enter data: ");
+                scanf("%d", &data);
+                top = push(top, data);
+                break;
+            }
+            case 2: 
+                top = delete(top);
+                break;
+            case 3: 
+                display(top);
+                break;
+            case 4: 
+                flag = 0;
+                break;
+            default: 
+                printf("Invalid choice. Try again.\n");
+        }
+    }
+    return 0;
+}
+
