@@ -77,3 +77,35 @@ int main() {
 
     return 0;
 }
+
+output:
+   1.insert
+ 2.display inorder
+ 3.display postorder
+ 4.display preorder
+ 5.exit
+ enter the choice:1
+enter the data:10
+
+ enter the choice:1
+enter the data:5
+
+ enter the choice:1
+enter the data:4
+
+ enter the choice:1
+enter the data:7
+
+ enter the choice:1
+enter the data:15
+
+ enter the choice:1
+enter the data:17
+
+ enter the choice:2
+the inorder is:4 5 7 10 15 17 
+ enter the choice:3
+the postorder is:4 7 5 17 15 10 
+ enter the choice:4
+the preorder is:10 5 4 7 15 17 
+ enter the choice:5
